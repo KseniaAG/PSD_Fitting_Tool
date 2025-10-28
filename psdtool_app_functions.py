@@ -296,19 +296,19 @@ def plot_sample(y, D, func_results, save_as = False):
     x = np.linspace(np.min(D)-2, np.max(D)+2, num=10000)
     fitted_ys = {}
     for keys in func_results.keys():
-        if keys == 'lognormal': 
+        if keys == 'Lognormal': 
             function = LOGNORMAL
-        if keys == 'weibull':
+        if keys == 'Weibull':
             function = WEIBULL
-        if keys == 'gig':
+        if keys == 'GIG':
             function = GIG
         fitted_ys[keys] = function(x, func_results[keys]['fitted_A'], func_results[keys]['fitted_B'])
     ## ploting the fitted functions 
     for keys in fitted_ys.keys():
-        if keys == 'lognormal':
+        if keys == 'Lognormal':
             ax.plot(x, fitted_ys[keys], color = colors[0], lw = 2, label = 'Lognormal BIC:' + str(np.round(func_results[keys]['BIC'], 2)), zorder = 2)
         
-        elif keys == 'weibull':
+        elif keys == 'Weibull':
             ax.plot(x, fitted_ys[keys], color = colors[1], lw = 2, label = f'Weibull BIC:' + str(np.round(func_results[keys]['BIC'], 2)), zorder = 2)
         
         else:
@@ -362,10 +362,10 @@ def plot_sample(y, D, func_results, save_as = False):
             maximum_y = np.nanmax(fit_dydx)
             print('maximum_y: ', maximum_y)
 
-        if keys == 'lognormal':
+        if keys == 'Lognormal':
             ax.plot(dx, fit_dydx, color = colors[0], lw = 2, label = 'Lognormal', zorder = 2)
 
-        elif keys == 'weibull':
+        elif keys == 'Weibull':
             ax.plot(dx, fit_dydx, color = colors[1], lw = 2, label = 'Weibull', zorder = 2)
         
         else:
